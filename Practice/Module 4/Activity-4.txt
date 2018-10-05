@@ -1,0 +1,16 @@
+Module-4
+Activity4
+1.The input given in the question was it was - the best -of times ---it was-the --
+2.Here in the input - means pop
+3.First the two words it and was pushed into the stack and now the words in the stack was it and was.
+4.We have to pop the element and the stack follows LIFO mechanism so the element which we have inserted last have to delete first so the word was is deleted first.
+5.next the two words the and best is pushed into the stack.
+6.Again pop so the word best is deleted.
+7.Next the two words of and times are pushed into the stack.
+8.there was three --- in the input so we have to last three inserted words so times,of,the words are deleted.
+9.Again two words it,was pushed into the stack.
+10.Again pop so was gets deleted.
+11.Again the was inserted in to the stack.
+12.There was two slashes in the input so the last two words gets deleted they are the and it gets deleted.
+13.The word remains in the stack is it.
+
