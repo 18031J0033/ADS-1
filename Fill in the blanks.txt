@@ -1,0 +1,63 @@
+Week-1 PC Fill in the blanks
+1.Stack<Integer>stack=new Stack<Integer>();
+while(N>0)
+{
+	stack.push(N%2);
+	N=N/2;
+}
+while(!stack.isEmpty())
+
+	System.out.println(stack.pop());
+The result was 0 because if the N value is 50 it will check in the loop and it enters into the loop and 50%2==0 so 0 is pushed into the stack and 0 remains inthe stack and when it is popped 0 is printed.
+2.The example given is
+Playing Cricket - is - a hobby - - of - - mentor - deepak
+In the first step playing is enqueued into the queue.
+In the second step cricket is enqueued into the queue.
+In the third step as queue is FIFO mechanism the first element which is entered into the queue is deleted that means playing is dequeued.
+In the fourth step is enqueued in to the queue.
+In the fifth step Playing is deleted.
+In the sixth step a is enqueued into the queue.
+In the seventh step hobby is enqueued into the queue
+In the eighth step is and a gets deleted.
+In the 9th step of is enqueued into the queue
+In the 10th step of and hobby gets dequeued.
+In the 11th step mentor is enqueued into the queue.
+In the 12th step mentor gets dequeued.
+In the 13th step deepak is enqueued.
+At the end deepak remains in the queue.
+3.b,d,e
+4.  step-1:0       1       2       4       4       5       6       7       8       9(union(3,4))
+      step-2:  0       1       2       9       9       5       6       7       8       9(union(4,9))
+      step-3:  0       1       2       9       9       5       6       7       0       9(union(8,0))
+       step-4: 0       1       9       9       9       5       6       7       0       9(union(2,3))
+       step-5: 0       1       9       9       9       6       6       7       0       9(union(5,6))
+       step-6: 0       1       9       9       9       9       9       7       0       9(union(5,9))
+        step-7:0       1       9       9       9       9       9       9       0       9(union(7,3))
+       step-8: 0       1       0       0       0       0       0       0       0       0(union(4,8))
+      step-9:  1       1       1       1       1       1       1       1       1(union(6,1))
+The minimum occupancy for resizing the arrays is 1 and the maximum occupancy for resizing the arrays is 
+
+5.The given paranthesis {[]()} is balanced because at the last the stack remains empty.
+step-1:{ is pushed into the stack.size of the stack is 1
+step-2:[ is pushed into the stack.size of the stack is 2
+step-3:] pushed into the stack.size of the stack is 3
+step-4:hence the closing bracket ] came we will pop the braces so the size of the stack is 1.
+step-5:( is pushed into the stack.size of the stack is 2
+step-6:) is pushed into the stack .size of the stack is 3.
+step-7:The braces ( and ) is popped out of the stack now the size of the stack is 1
+Step-7:} is pushed into the stack and the size of the stack is
+step-8:The two braces { and } are deleted from the stack.
+step-9:Finally the stack is empty and the size of the stack is zero.
+6.N
+7.NLOGN
+8.1
+9.N^2
+10. step-1:0       1       2       4       4       5       6       7       8       9(union(3,4))
+      step-2:  0       1       2       9       9       5       6       7       8       9(union(4,9))
+      step-3:  0       1       2       9       9       5       6       7       0       9(union(8,0))
+       step-4: 0       1       9       9       9       5       6       7       0       9(union(2,3))
+       step-5: 0       1       9       9       9       6       6       7       0       9(union(5,6))
+       step-6: 0       1       9       9       9       9       9       7       0       9(union(5,9))
+        step-7:0       1       9       9       9       9       9       9       0       9(union(7,3))
+       step-8: 0       1       0       0       0       0       0       0       0       0(union(4,8))
+      step-9:  1       1       1       1       1       1       1       1       1(union(6,1))
