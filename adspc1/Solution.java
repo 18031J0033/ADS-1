@@ -4,12 +4,16 @@ class LinkedList
 {
 	class Node
 	{
-		protected String digit;
+		 String data;
 		Node next;
+		Node(String data)
+		{
+			this.data=data;
+		}
 		
 		public String getDigit()
 		{
-			return this.digit;
+			return this.data;
 		}
 		public Node getNext()
 		{
@@ -31,7 +35,7 @@ class LinkedList
         if(head==null) 
         {
             head=new Node();
-            head.digit=val;
+            head.data=val;
             head.next=null;
             last=head;
         }
