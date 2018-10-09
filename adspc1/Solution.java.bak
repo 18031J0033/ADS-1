@@ -1,4 +1,4 @@
-
+package adspc1;
 import java.util.Scanner;
 class LinkedList
 {
