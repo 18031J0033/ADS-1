@@ -1,4 +1,5 @@
-Write the missing codes
+write the missing statements in the below code:\
+
 public class Selection { 
 
 public static void sort(Comparable[] a) {
@@ -22,8 +23,9 @@ exch(a, i, ----------------);     //Blank4
  }
 
  }
-Blank-1:Scanner sc=new Scanner(System.in);
-int N=sc.nextInt();
-Blank-2:Int min=i;
-Blank-3:min=j;
-Blank-4:exch(a,i,j);
+
+Answers-
+Blank 1:size of the array to be sorted.
+Blank 2:0
+Blank 3:which element is lesser.
+Blank 4:min
