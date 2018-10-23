@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 class T
@@ -17,34 +16,34 @@ class T
 class SelectionSort 
 { 
 	int count = 0;
-    void sort(T name[]) 
+    void sort(T a[]) 
     { 
     	int i=0;
-        while(name[i]!=null)
+        while(a[i]!=null)
         {
-        	if(name[i]!=null)
+        	if(a[i]!=null)
         		count++;
         	i++;
         }
         for (i = 0; i <count; i++) 
         { 
-                        
+            // Find the minimum element in unsorted array 
+            int min = i; 
             for (int j = i+1; j < count; j++) {
-                if (name[j].wins > name[i].wins) 
-                    i= j; 
-                if(name[j].wins == name[i].wins) {
-                	if (name[j].loses < name[i].loses) 
-                        i=j; 
+                if (a[j].wins > a[min].wins) 
+                    min= j; 
+                if(a[j].wins == a[min].wins) {
+                	if (a[j].loses < a[min].loses) 
+                        min=j; 
                 }
-                if((name[j].wins == name[i].wins)&&(name[j].loses == name[i].loses)) {
-                	if (name[j].draws > name[i].draws) 
-                        i = j; 
+                if((a[j].wins == a[min].wins)&&(a[j].loses == a[min].loses)) {
+                	if (a[j].draws > a[min].draws) 
+                        min = j; 
                 }
             }
-            int min=i;
-            T temp = name[min]; 
-            name[min] = name[i]; 
-            name[i] = temp; 
+            T temp = a[min]; 
+            a[min] = a[i]; 
+            a[i] = temp; 
         } 
     } 
    
