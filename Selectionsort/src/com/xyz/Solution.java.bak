@@ -1,4 +1,4 @@
-
+package com.xyz;
 import java.util.Scanner;
 
 class T
