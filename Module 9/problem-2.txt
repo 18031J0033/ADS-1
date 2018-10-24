@@ -1,0 +1,7 @@
+BottomUp Mergesort
+EASYQUESTION
+STEP-1:AE	SY	QU	IT	NO
+STEP-2:AESY	QSUY	INOT
+STEP-3:AEESSYU	INOT
+The sorted array is as follows
+STEP-4:AEEINOSSTUY	
