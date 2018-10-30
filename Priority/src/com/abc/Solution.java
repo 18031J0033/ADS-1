@@ -1,111 +1,126 @@
-
-
 import java.util.Scanner;
 
-class minHeap {
-	public boolean minHeapInt(String a[]) {
-		int x = a.length;
-		if(a.length<1) {
-			return false;
-		}
-		int ar[] = new int[x];
-		
-		for (int i = 0; i < a.length; i++) {
-			ar[i] = Integer.parseInt(a[i]);
-		}
-		boolean flag = false;
-		for (int i = 0; i < ar.length; i++) {
-			for (int j = i; j < ar.length; j++) {
-				if (ar[i] < ar[j]) {
-					flag = true;
-				}else if(ar[i] > ar[j]){
-					flag = false;
-				}
-			}
-		}
-
-		return flag;
-
-	}
-	public boolean minHeapString(String a[]) {
-		int x = a.length;
-		if(a.length<1) {
-			return false;
-		}
-		String ar[] = new String[x];
-		
-		for (int i = 0; i < a.length; i++) {
-			ar[i] = a[i];
-		}
-		boolean flag = false;
-		for (int i = 0; i < ar.length; i++) {
-			for (int j = i; j < ar.length; j++) {
-				if (ar[i].compareTo(ar[j])<0) {
-					flag = true;
-				}else if(ar[i].compareTo(ar[j])>0){
-					flag = false;
-				}
-			}
-		}
-
-		return flag;
-
-	}
-}
-
 public class Solution {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		String input = sc.nextLine();
-		String n = sc.nextLine();
-		int x = Integer.parseInt(n);
-		boolean b[] = new boolean[x];
-		switch (input)
+
+	public static void main(String args[])
+	{
+		
+		Scanner scan=new Scanner(System.in);
+		String s=scan.nextLine();
+		int j=Integer.parseInt(scan.nextLine());
+		int f=0;
+		if(s.equals("String"))
 		{
-		case "Integer":
-			int i = Integer.parseInt(n);
-
-			for (int k = 0; k < i; k++) {
-				String line = sc.nextLine();
-				String items[] = line.split(",");
-				minHeap ob = new minHeap();
-				b[k] = ob.minHeapInt(items);
-			}
-			break;
-
-		case "String":
-			i = Integer.parseInt(n);
-
-			for (int k = 0; k < i; k++) {
-				String line = sc.nextLine();
-				String items[] = line.split(",");
-				minHeap ob = new minHeap();
-				b[k] = ob.minHeapString(items);
-			}
-			break;
-		case "Float":
-			i=Integer.parseInt(n);
-		for (int k = 0; k < i; k++) {
-					String line = sc.nextLine();
-					String items[] = line.split(",");
-					minHeap ob = new minHeap();
-					b[k] = ob.minHeapString(items);
+			while(scan.hasNext())
+			{
+				
+				String sc=scan.nextLine();
+				String a[]=sc.split(",");
+				int n=a.length;
+				boolean h=true;
+				for (int i = n / 2 - 1; i >= 0; i--) 
+				{
+					h=true;
+					 h=heapify(a, n, i); 
+					 if(h==false)
+						 break;
 				}
-				break;
-	case "Double":
-		i=Integer.parseInt(n);
-		for (int k = 0; k < i; k++) {
-					String line = sc.nextLine();
-					String items[] = line.split(",");
-					minHeap ob = new minHeap();
-					b[k] = ob.minHeapString(items);
+				System.out.println(h);
+			}
+			
+		}
+		else
+		{
+			while(scan.hasNext())
+			{
+				f++;
+				String sc=scan.nextLine();
+				String a[]=sc.split(",");
+				Double b[]=new Double[a.length];
+				if(b.length==0)
+					System.out.println("false");
+				else {
+				for(int i=0;i<a.length;i++)
+				{
+					b[i]=Double.parseDouble(a[i]);
 				}
-				break;
-
+				int n=a.length;
+				boolean h=true;
+				for (int i = n / 2 - 1; i >= 0; i--) 
+				{
+					h=true;
+					 h=heapify1(b, n, i); 
+					 if(h==false)
+						 break;
+				}
+				System.out.println(h);
+				}
+			}
+			if(j!=f)
+				System.out.println("false");
+			
 		}
-		for (int k = 0; k < b.length; k++) {
-			System.out.println(b[k]);
-		}
-	}
+		} 
+	
+	
+static boolean heapify(String arr[], int n, int i) 
+{ 
+    int largest = i; // Initialize largest as root 
+    int l = 2*i + 1; // left = 2*i + 1 
+    int r = 2*i + 2; // right = 2*i + 2 
 
+    // If left child is larger than root 
+   // if (l < n && arr[l] < arr[largest]) 
+    if(l<n&&arr[l].compareTo(arr[largest])<0)
+        return false;
+
+    // If right child is larger than largest so far 
+    if (r < n && arr[r].compareTo(arr[largest])<0) 
+        return false;
+
+    // If largest is not root 
+    if (largest != i) 
+    { 
+        String swap = arr[i]; 
+        arr[i] = arr[largest]; 
+        arr[largest] = swap; 
+
+        // Recursively heapify the affected sub-tree 
+        heapify(arr, n, largest); 
+        
+       
+        
+    } 
+    return true;
+}
+static boolean heapify1(Double arr[], int n, int i) 
+{ 
+    int largest = i; // Initialize largest as root 
+    int l = 2*i + 1; // left = 2*i + 1 
+    int r = 2*i + 2; // right = 2*i + 2 
+
+    // If left child is larger than root 
+   // if (l < n && arr[l] < arr[largest]) 
+    if(l<n&&arr[l]<arr[largest])
+        return false;
+
+    // If right child is larger than largest so far 
+    if (r < n && arr[r]<arr[largest]) 
+        return false;
+
+    // If largest is not root 
+    if (largest != i) 
+    { 
+        Double swap = arr[i]; 
+        arr[i] = arr[largest]; 
+        arr[largest] = swap; 
+
+        // Recursively heapify the affected sub-tree 
+        heapify1(arr, n, largest); 
+        
+       
+        
+    } 
+    return true;
+}
 }
