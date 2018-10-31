@@ -2,7 +2,7 @@ package com.abc;
 
 import java.util.Scanner;
 
-public class HeapS 
+public class Solution
 { 
     public static void sort(double arr[],int l) 
     { 
