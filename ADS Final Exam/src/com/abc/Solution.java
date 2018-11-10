@@ -1,130 +1,69 @@
-package com.abc;
-import java.util.ArrayList;
-import java.util.Collections;
+
+import java.util.HashMap;
 import java.util.Scanner;
 
-import com.abc.BinarySearchTree.Node;
-
-class Student implements Comparable<Student>
-{
-	String name;
-	double total_marks;
-	int roll_number;
-	public Student(String name, String input, double d)
-	{
-		this.name=name;
-		this.total_marks=input;
-		this.roll_number=d;
-		
-	}
-	public Student(String data[])
-	{
-		this.name=data[0];
-		this.total_marks=Integer.parseInt(data[1]);
-		this.roll_number=Integer.parseInt(data[2]);
-		
-	}
-	@Override
-	public int compareTo(Student st) {
-		
-		// TODO Auto-generated method stub
-		return 0;
-	}
-}
 class Student1
 {
-	Node root=null;
-	class Node
+	int roll_number;
+	String name;
+	double total_marks;
+	
+	Student1(String name,double total_marks)
 	{
-		  Student key;
-	        Integer value;
-	         Node left;
-	         Node right;
-			public int size;
-	        Node(Student key,Integer value)
-	        {
-	        	this.key=key;
-	        	this.value=value;
-	        }
+		
+		this.name=name;
+		this.total_marks=total_marks;
 	}
-	 public boolean isEmpty()
-	    { 
-	    return root == null; 
-	    }
-	    
-	    public void put(Student key, Integer value)
-	    { 
-	    root = put(root, key, value); 
-	    }
-	    private Node put(Node x, Student key, Integer val)
-	    {
-	     if (x == null) 
-	   	  return new Node(key, val);
-	     int cmp = key.compareTo(x.key);
-	     if (cmp < 0)
-	     {
-	    	 x.left = put(x.left, key, val);
-	     }
-	     else if (cmp > 0) 
-	     {
-	    	 x.right = put(x.right, key, val);
-	     }
-	     else
-	    { 
-	    	 x.value = val;
-	    	
-	    }
-	     return x;
-	    }
-	    public Integer get(Student key)
-	    { 
-
-	    return get(root, key);
-	    }
-	    
-	   
-	    private Integer get(Node x, Student key)
-	    {
-	     if(x == null) 
-	   	  return null;
-	     int cmp = key.compareTo(x.key);
-	     if(cmp < 0) 
-	   	  return get(x.left, key);
-	     else if(cmp > 0) 
-	   	  return get(x.right, key);
-	     else if(cmp == 0) 
-	   	  return x.value;
-	   return null;
-	    }
-
-	   
+	public Double getTotal()
+	{
+		return this.total_marks;
+	}
+	public String getName()
+	{
+		return this.name;
+	}
+	
 }
 
-public class Solution {
 
-	public static void main(String[] args) {
+
+public class Solution 
+{
+
+	public static void main(String[] args) 
+	{
 		Scanner sc=new Scanner(System.in);
-		// TODO Auto-generated method stub
-		Student1 obj=new Student1();
-		while(sc.hasNext())
-		{
-			String i=sc.nextLine();
-			String input[]=i.split(",");
-			//Book k=new Book(input[1],input[2],Double.parseDouble(input[3]));
-			switch(input[0])
-			{
-			case "put":
-				obj.put( new Student(input[1],input[2],Double.parseDouble(input[3])),Integer.parseInt(input[4]));
-						break;
-			
-			case "get":
-				System.out.println(obj.get(new Student(input[1],input[2],Double.parseDouble(input[3]))));
-						break;
-			}
-			
-		}
+		int n=Integer.parseInt(sc.nextLine());
+		HashMap<Integer,Student1> h=new HashMap<Integer,Student1>(n);
 		
-
+		for(int i=0;i<n;i++)
+		{
+			String elements[]=sc.nextLine().split(",");
+			h.put(Integer.parseInt(elements[0]),
+					new Student1(elements[1],Double.parseDouble(elements[2])));
+		}
+		int n1=Integer.parseInt(sc.nextLine());
+		for(int i=0;i<n1;i++)
+		{
+			String elements1[]=sc.nextLine().split(" ");
+			Student1 det=h.get(Integer.parseInt(elements1[1]));
+			if(det == null)
+			{
+				System.out.println("Student doesn't exists...");
+			}
+			else
+			{
+				if(elements1[2].equals("1"))
+				{
+					System.out.println(det.getName());
+				}
+				else
+				{
+					System.out.println(det.getTotal());
+				}
+			}
+		}
+			
 	}
 
 }
