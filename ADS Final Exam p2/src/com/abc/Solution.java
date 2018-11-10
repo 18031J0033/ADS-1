@@ -1,0 +1,111 @@
+package com.abc;
+import java.util.*;
+
+import com.abc.Student1.Node;
+class Student
+{
+	String name;
+	double total_marks;
+	int roll_number;
+	public Student(String name, double total_marks, int roll_number)
+	{
+		this.name=name;
+		this.total_marks=total_marks;
+		this.roll_number=roll_number;
+		
+	}
+	public int compareTo(Student key) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}
+class Student1
+{
+	Node root=null;
+	class Node
+	{
+		Student key;
+        Integer value;
+        Node left;
+        Node right;
+		public int size;
+        Node(Student key,Integer value)
+        {
+        	this.key=key;
+        	this.value=value;
+        }
+		
+	}
+	 public boolean isEmpty()
+	    { 
+	    return root == null; 
+	    }
+	    
+	    public void put(Student key, Integer value)
+	    { 
+	    root = put(root, key, value); 
+	    }
+	    private Node put(Node x, Student key, Integer val)
+	    {
+	     if (x == null) 
+	   	  return new Node(key, val);
+	     int cmp = key.compareTo(x.key);
+	     if (cmp < 0)
+	     {
+	    	 x.left = put(x.left, key, val);
+	     }
+	     else if (cmp > 0) 
+	     {
+	    	 x.right = put(x.right, key, val);
+	     }
+	     else
+	    { 
+	    	 x.value = val;
+	    	
+	    }
+	     return x;
+	    }
+	    public Integer get(Student key)
+	    { 
+
+	    return get(root, key);
+	    }
+	    
+	   
+	    private Integer get(Node x, Student key)
+	    {
+	     if(x == null) 
+	   	  return null;
+	     int cmp = key.compareTo(x.key);
+	     if(cmp < 0) 
+	   	  return get(x.left, key);
+	     else if(cmp > 0) 
+	   	  return get(x.right, key);
+	     else if(cmp == 0) 
+	   	  return x.value;
+	   return null;
+	    }
+
+
+}
+
+public class Solution {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		while(sc.hasNext())
+		{
+			String i=sc.nextLine();
+			String input[]=i.split(",");
+			switch(input[0])
+			{
+				
+			}
+			
+		}
+		
+		// TODO Auto-generated method stub
+
+	}
+
+}
