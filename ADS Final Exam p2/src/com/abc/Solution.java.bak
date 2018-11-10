@@ -97,8 +97,17 @@ public class Solution {
 		{
 			String i=sc.nextLine();
 			String input[]=i.split(",");
+			Student1 obj=new Student1();
 			switch(input[0])
 			{
+			case "put":
+				obj.put( new Student(input[1],input[2],Double.parseDouble(input[3])),Integer.parseInt(input[4]));
+						break;
+			
+			case "get":
+				System.out.println(obj.get(new Student(input[1],input[2],Double.parseDouble(input[3]))));
+						break;
+			
 				
 			}
 			

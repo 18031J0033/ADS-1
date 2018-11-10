@@ -1,120 +1,216 @@
-package com.abc;
+import java.util.Scanner;
 import java.util.*;
-
-import com.abc.Student1.Node;
-class Student
+class Studentdetails
 {
+	String rollno;
 	String name;
-	double total_marks;
-	int roll_number;
-	public Student(String name, double total_marks, int roll_number)
+	double total;
+	public Studentdetails(String rollno, String name, double total) 
 	{
-		this.name=name;
-		this.total_marks=total_marks;
-		this.roll_number=roll_number;
+		this.name = name;
+		this.rollno = rollno;
+		this.total = total;
+	}
+	public Studentdetails() {
 		
 	}
-	public int compareTo(Student key) {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public int compareTo(Studentdetails key) {
+				if(this.name.equals(key.name))
+				{
+					return 0;
+				}
+				else if(this.name.compareTo(key.name)>0)
+				{
+					return 1;
+				}
+				else
+				return -1;
 	}
+	
 }
-class Student1
+
+
+class Node
 {
-	Node root=null;
-	class Node
-	{
-		Student key;
-        Integer value;
-        Node left;
-        Node right;
-		public int size;
-        Node(Student key,Integer value)
-        {
-        	this.key=key;
-        	this.value=value;
-        }
-		
-	}
-	 public boolean isEmpty()
-	    { 
-	    return root == null; 
-	    }
-	    
-	    public void put(Student key, Integer value)
-	    { 
-	    root = put(root, key, value); 
-	    }
-	    private Node put(Node x, Student key, Integer val)
-	    {
-	     if (x == null) 
-	   	  return new Node(key, val);
-	     int cmp = key.compareTo(x.key);
-	     if (cmp < 0)
-	     {
-	    	 x.left = put(x.left, key, val);
-	     }
-	     else if (cmp > 0) 
-	     {
-	    	 x.right = put(x.right, key, val);
-	     }
-	     else
-	    { 
-	    	 x.value = val;
-	    	
-	    }
-	     return x;
-	    }
-	    public Integer get(Student key)
-	    { 
-
-	    return get(root, key);
-	    }
-	    
-	   
-	    private Integer get(Node x, Student key)
-	    {
-	     if(x == null) 
-	   	  return null;
-	     int cmp = key.compareTo(x.key);
-	     if(cmp < 0) 
-	   	  return get(x.left, key);
-	     else if(cmp > 0) 
-	   	  return get(x.right, key);
-	     else if(cmp == 0) 
-	   	  return x.value;
-	   return null;
-	    }
-
-
+	Studentdetails key;
+Node left,right;
+int size;
+public Node(Studentdetails key,int size) {
+	
+	this.key = key;
+	this.size=size;
 }
-
-public class Solution {
-
-	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
-		while(sc.hasNext())
+}
+class Binarytree {
+	
+		Node root;
+		
+		
+		void put(Studentdetails k)
 		{
-			String i=sc.nextLine();
-			String input[]=i.split(",");
-			Student1 obj=new Student1();
-			switch(input[0])
+			root=put(root,k);
+		}
+		Node put(Node x,Studentdetails k)
+		{
+			if(x==null)
 			{
-			case "put":
-				obj.put( new Student(input[1],input[2],Double.parseDouble(input[3])),Integer.parseInt(input[4]));
-						break;
-			
-			case "get":
-				System.out.println(obj.get(new Student(input[1],input[2],Double.parseDouble(input[3]))));
-						break;
-			
 				
+				return new Node(k,1);
+			}
+			int cmp=k.compareTo(x.key);
+			if(cmp<0) {
+				x.left=put(x.left,k);
+			}
+			else if(cmp>0)
+			{
+				x.right=put(x.right,k);
+			}
+			else
+				x.key=k;
+				
+			x.size=1+size(x.left)+size(x.right);
+			return x;
+		}
+
+		Studentdetails get(String k,Node x)
+		{
+			
+			while(x!=null)
+			{
+				
+				int cmp=k.compareTo(x.key.name);
+				if(cmp<0)
+					x=x.left;
+				else if(cmp>0)
+					x=x.right;
+				else
+					return x.key;
+			}
+			return null;
+		}
+
+		public int size() {
+		    return size(root);
+		}
+		private int size(Node x) {
+		    if (x == null)
+		    	return 0;
+		    else return x.size;
+		}
+
+		public void inorderbe(double d1,double d2)
+		{
+			
+		inorderbe(root,d1,d2);	
+		}
+		public void inorderbe(Node n,double d1,double d2)
+		{
+			if(n==null)
+				return;
+			else
+			{
+				
+			inorderbe(n.left,d1,d2);
+			
+			inorderbe(n.right,d1,d2);
+			if(n.key.total>=d1 && n.key.total<=d2)
+			{
+				System.out.println(n.key.name);
+			}
+		
+			}
+		}
+		public void inorderge(double d1)
+		{
+		inorderge(root,d1);
+	
+			
+		}
+		public void inorderge(Node n,double d1)
+		{
+			if(n==null)
+				return;
+			else
+			{
+				
+			inorderge(n.left,d1);
+			inorderge(n.right,d1);
+			if(n.key.total>=d1 )
+			{
+				System.out.println(n.key.name);
+			}
 			}
 			
 		}
 		
-		// TODO Auto-generated method stub
+public void inorderle(double d1)
+{
+inorderle(root,d1);
+
+	
+}
+public void inorderle(Node n,double d1)
+{
+	if(n==null)
+		return;
+	else
+	{
+		
+	inorderle(n.left,d1);
+	
+	inorderle(n.right,d1);
+	if(n.key.total<=d1 )
+	{
+		System.out.println(n.key.name);
+	}
+	
+
+	}
+}
+}
+public class Solution {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n1=sc.nextInt();
+		Binarytree b=new Binarytree();
+	String se=sc.nextLine();
+	String string[]=new String[n1];
+	for(int i = 0;i<n1;i++)
+	{
+		String s1=sc.nextLine();
+		
+		String s2[]=s1.split(",");
+		Studentdetails sd=new Studentdetails(s2[0],s2[1],Double.parseDouble(s2[2]));
+	b.put(sd);
+	}
+
+	int n2=sc.nextInt();
+	//String x=s.next();
+	int c=0;
+	for(int i = 0;i<n2+1;i++)
+	{
+		String s1=sc.nextLine();
+		String s2[]=s1.split(" ");
+		switch(s2[0])
+		{
+		case "BE":double d1=Double.parseDouble(s2[1]),d2=Double.parseDouble(s2[2]);
+		b.inorderbe(d1, d2);
+			
+			break;
+		case "GE":
+			double d3=Double.parseDouble(s2[1]);
+			b.inorderge(d3);
+			break;
+		case "LE":
+			double d4=Double.parseDouble(s2[1]);
+			b.inorderle(d4);
+			break;
+		}
+	}
 
 	}
 
 }
+
